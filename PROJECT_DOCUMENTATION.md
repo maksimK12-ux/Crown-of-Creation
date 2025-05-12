@@ -5,8 +5,8 @@
 # Sprint 1
 ## Requirements defintion
 ### Functional Requirements
-* Data Retrieval: 
-* User Interface:
+* Data Retrieval: The user must be able to view their character and the game while they play it. The user must be able to play the game and view what they're doing regarding their gameplay
+* User Interface: To interact with the system, the user must move their mouse/keypad. The user also needs a working computer and connection to the inetrnet.
 * Data Display:
 ### Non-functional Requirements
 * Performance:
@@ -26,3 +26,12 @@
 * Useability/Accesibility
 
 ## Use Cases
+
+
+
+
+
+
+
+
+
