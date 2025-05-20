@@ -21,9 +21,9 @@
 * User Interaction: To interact with the system, the user must move their arrowkeys and potentailly write things to solve puzzles. To fight the bosses, the user must choose certain attacks using the space bar.
 * Error Handling: Errors I could face during the code could include a breach of data integrity, this could be solved by updating your version of python and fixing your code for bugs and glitches. Menu navigation can also be confusing for new users, this can be solved by reading and understanding the program better.
 ### Non-Functional Specifications
-* Performance:
-* Reliability:
-* Useability/Accesibility
+* Performance: The system must perform simple tasks to the users expectations. If these standards are not met, the maintenance of user engagement drops and the code fails. To ensure that the program is efficient, it is important to make sure that python is updated to the newest version or the version where the code was made.
+* Reliability: To make the application more accessible, I could make a very in-depth README file to increase simplicity in my code. To improve the User Interface (UI), I could make it easier to understand and rely on design as well as functionality of the system
+* Useability/Accesibility: An issue that I could face in the code is menu navigation doing the wrong thing. This decreases user engagement and can be solved by fixing certain aspects in the code which cause the issue. To prevent complications like data integrity and illogical calculation, user must make sure that their versions of python are fully updated.
 
 ## Use Cases
 
