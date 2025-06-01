@@ -27,12 +27,12 @@ print_not_fast("""
     but ensured your success a society, until one day a threat came that you couldn't beat...
 """, 0.01)
 
-choices = input("""
+choices = int(input("""
                 What do you want to do?
                 1. Tell them who you used to be
                 2. Attempt to fight them (You are severely weakened)
-                3. Steal their rations and gain strength""")
+                3. Steal their rations and gain strength"""))
 
-if choices == 1():
-    print("""You walk up to the guards and introduce yourself in a weakened voice.
-          I am """)
+if choices == 1:
+    print(f"""You walk up to the guards and introduce yourself in a weakened voice.
+          I am {name}""")
