@@ -38,9 +38,19 @@
 ## Level 0 Data Flow Diagram:
 <img src="level_0_dfd.png">
 
+## Level 1 Data Flow Diagram:
+<img src="level_1_dfd.png">
 
 
 
 
+## End of Sprint 1 Questions: 
+
+### 1. Evaluate how effectively your project meets the functional and non-functional requirements defined in your planning: My project meets the Functional and Non-Functional requirements well as it does evrything described in them. It runs smoothly and is up to my standards. My project has a successful User Interface, Data Display and Data Retrieval. It is reliable and very useable.
 
 
+### 2. Analyse the performance of your program against the key use-cases you identified:
+
+### 3. Assess the quality of your code in terms of readability, structure, and maintainability:
+
+### 4. Explain the improvements that should be made in the next stage of development:
