@@ -33,4 +33,3 @@ GAME_OVER_TEXT = "You have fallen. The Harbinger's shadow remains. Karst is lost
 VICTORY_TEXT = """ The Harbinger of Death is no more! Light returns to Karst. 
                    With the Crown of Creation, you forge a new empire from the ashes of the old. 
                    Your legend will be sung for generations. """
-

@@ -43,3 +43,25 @@ class Battle:
     def enemy_turn(self):
         if not self.enemy.is_alive() or not self.player.is_alive():
             return "Battle is over."
+        
+        damage_dealt = self.enemy.basic_attack(self.player)
+        message = f"{self.enemy.name} strikes {self.player.name} for {damage_dealt} damage."
+        if not self.player.is_alive():
+            message += f"\n{self.player.name} has fallen."
+
+        self.log_message(message)
+        self.current_turn = self.player
+
+        if self.ui_upate_callback:
+            self.ui_upate_callback()
+        return message
+    
+    def get_battle_status(self):
+        if not self.player.is_alive():
+            return "defeat"
+        if not self.enemy.is_alive():
+            return "alive"
+        return "ongoing"
+    
+    def get_log(self):
+        return "\n".join(self.battle_log[-5:])

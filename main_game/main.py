@@ -1,80 +1,117 @@
-from time import sleep
+import tkinter as tk
+from tkinter import ttk 
+import plot
+from character import PlayerCharacter, Aurelia
+from ui import StartScreen, NarrativeScreen, ClassSelectionScreen
+
+class Game:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Crown of Creation") 
+        self.root.geometry("800x600") 
+
+        self.player = None
+        self.current_battle = None
+        self.current_screen_widget = None
+        self.story_progression_index = 0
+        self.defeated_mini_bosses = [] # Stores names of defeated bosses
+        self.story_segments = [
+            (plot.STORY_START_DESERT, self.show_next_story_segment),
+            (plot.STORY_JOURNEY_CONTINUES, self.show_next_story_segment),
+            (plot.STORY_GATE_REVELATION, self.show_next_story_segment),
+            (plot.STORY_HARBINGER_INTRO, self.show_class_selection)
+        ]
+        # Boss encounter sequence
+        self.boss_encounter_order = ["Aurelia", "Nero", "Decimus", "Harbinger"]
+        self.current_boss_index = 0
+
+        self.show_start_screen()
+
+    def _clear_current_screen(self):
+        if self.current_screen_widget:
+            self.current_screen_widget.hide() # Use hide method from BaseScreen
+            self.current_screen_widget.destroy() # Destroy to free memory
+            self.current_screen_widget = None
+
+    def show_start_screen(self): 
+        self._clear_current_screen()
+        self.current_screen_widget = StartScreen(self.root, self)
+        self.current_screen_widget.show()
+        # Reset game state for a new game if returning to start screen
+        self.player = None
+        self.current_battle = None
+        self.story_progression_index = 0
+        self.defeated_mini_bosses = []
+        self.current_boss_index = 0
 
 
-def print_not_fast(txt, n):
-    for x in txt:
-        print(x, end="", flush=True)
-        sleep(n)
+    def start_new_game(self):
+        print("Game started") 
+        print("----------------------------------------------------------------------------")
+        print("""
+        ▒█▀▀█ █▀▀█ █▀▀█ █░░░█ █▀▀▄ 　 █▀▀█ █▀▀ 　 ▒█▀▀█ █▀▀█ █▀▀ █▀▀█ ▀▀█▀▀ ░▀░ █▀▀█ █▀▀▄ 
+        ▒█░░░ █▄▄▀ █░░█ █▄█▄█ █░░█ 　 █░░█ █▀▀ 　 ▒█░░░ █▄▄▀ █▀▀ █▄▄█ ░░█░░ ▀█▀ █░░█ █░░█ 
+        ▒█▄▄█ ▀░▀▀ ▀▀▀▀ ░▀░▀░ ▀░░▀ 　 ▀▀▀▀ ▀░░ 　 ▒█▄▄█ ▀░▀▀ ▀▀▀ ▀░░▀ ░░▀░░ ▀▀▀ ▀▀▀▀ ▀░░▀""")
+        print("----------------------------------------------------------------------------")
+        
+        self.story_progression_index = 0
+        self.show_next_story_segment()
+
+    def show_next_story_segment(self):
+        if self.story_progression_index < len(self.story_segments):
+            narrative_text, next_action_callback = self.story_segments[self.story_progression_index]
+            self.story_progression_index += 1
+            self._clear_current_screen()
+            self.current_screen_widget = NarrativeScreen(self.root, self, narrative_text, next_action_callback)
+            self.current_screen_widget.show()
+        else:
+            print("End of predefined story segments.")
+            self.show_class_selection()
 
 
-print("----------------------------------------------------------------------------")
-print("""
-▒█▀▀█ █▀▀█ █▀▀█ █░░░█ █▀▀▄ 　 █▀▀█ █▀▀ 　 ▒█▀▀█ █▀▀█ █▀▀ █▀▀█ ▀▀█▀▀ ░▀░ █▀▀█ █▀▀▄ 
-▒█░░░ █▄▄▀ █░░█ █▄█▄█ █░░█ 　 █░░█ █▀▀ 　 ▒█░░░ █▄▄▀ █▀▀ █▄▄█ ░░█░░ ▀█▀ █░░█ █░░█ 
-▒█▄▄█ ▀░▀▀ ▀▀▀▀ ░▀░▀░ ▀░░▀ 　 ▀▀▀▀ ▀░░ 　 ▒█▄▄█ ▀░▀▀ ▀▀▀ ▀░░▀ ░░▀░░ ▀▀▀ ▀▀▀▀ ▀░░▀""")
-print("----------------------------------------------------------------------------")
+    def show_class_selection(self): 
+        self._clear_current_screen()
+        self.current_screen_widget = ClassSelectionScreen(self.root, self)
+        self.current_screen_widget.show()
 
-name = input("What is your name? ")
+    def finalize_class_selection(self, class_type):
+        player_name = "The Banished" # TODO: consider asking for the name
+        self.player = PlayerCharacter(player_name, class_type) 
+        print(f"Player created: {self.player.name}, Class: {self.player.class_type}")
 
-print_not_fast("""
-You wake up, mind blank and not a thought in your head and observe your surroundings.
-A dark, ashen desert streches as far as the eye can see.
-You start walking until you can't feel your legs, manouvering yourself through darkened
-caverns and avoiding vultures circling around you, knowing your imminent death
-Just as you're on the brink of giving up, you see something in the distance, a large gate blocks
-the entrance to The Midland of Karst, a place you once called home, and suddenly all the memories start rushing back.
-You were once the Army General of this decayed country, fighting in wars that killed hundreds
-but ensured your success a society, until one day a threat came that you couldn't beat...
-    
-""", 0.01)
+        self.current_boss_index = 0 # Start with the first boss
+        self.initiate_next_encounter()
 
-print_not_fast("""The Harbinger of Death, the name rings in your head like a migrain.
-How can such evil exist in the world, you think to yourself.
-All was well in the Midland, no new wars in just shy of 8 years, then, a figure came from the ominous ravine at the edge of town.
-At first he was accepted, made one of our own, but the second he laid eyes on the Crown of Creation,
-obsession overpowered him and we found out he wasn't here to make friends
-               
-""", 0.01)
+    def initiate_next_encounter(self):
+        if self.current_boss_index < len(self.boss_encounter_order):
+            boss_name = self.boss_encounter_order[self.current_boss_index]
+            enemy = None
+            intro_text = plot.BOSS_INTROS.get(boss_name, f"You encounter {boss_name}.")
 
-print_not_fast("""You see a gate in the distance, tall and grand, you know this is your way back home.
-You begin to walk towards it but there's a guard
-               
-""", 0.01)
+            if boss_name == "Aurelia":
+                enemy = Aurelia()
+            else:
+                # TODO: other bosses
+                pass
+            
+            if enemy:
+                # Show narrative intro for the boss first
+                self._clear_current_screen()
+                # The next action after this narrative is to start the battle
+                self.current_screen_widget = NarrativeScreen(self.root, self, intro_text, lambda: self.start_battle(enemy))
+                self.current_screen_widget.show()
+            else:
+                print(f"Error: Boss {boss_name} not defined.")
+        else:
+            # TODO: All bosses defeated
+            pass
 
-print_not_fast("What will you do?", 0.1)
+    def start_battle(self, enemy):
+        # TODO: battle..
+        print("Start battle...")
+        pass
 
-choices = int(input("""
-                What do you want to do?
-                1. Tell them who you used to be
-                2. Attempt to fight them (You are severely weakened)
-                3. Steal their rations and gain strength
-                Choose either 1, 2 or 3: """))
-
-if choices == 1:
-    print_not_fast(f"""You walk up to the guards and introduce yourself in a weakened voice.
-I am {name} and I used to be the Army General of Karst. 
-What happened to this great land and why am I outcast into the shadows?
-I demand to know what happened.
-
-Guard: Your time is over, OLD MAN! A new generation has blossomed.
-*The guard stabs you and you die*
-""", 0.01)
-    
-if choices == 2:
-    print_not_fast(f"""Hello, young man, I am the great Army General {name} and I must slay you.
-Prepare for your imminent doom!
-
-*You pull a weathered and dull knife from your boot*
-
-Guard: You foolish old man, you think you can beat me? Ha!
-Maybe if you weren't so weakened and puny, you'd stand a chance!
-
-*He unsheaths a longsword and plunges it into your heart*
-""", 0.01)
-
-if choices == 3:
-    print_not_fast(f"""*You remember when you were taught Sneak 101 in army school*
-*You wait until the guard is distracted by a pack of wolves*
-Ha, fool, these young'ns need to keep their post instead of being distraced by stupid wolves
-*You take his food and water and regain your strength*
-""", 0.01)
+if __name__ == '__main__':
+    root = tk.Tk() 
+    app = Game(root)
+    root.mainloop()
