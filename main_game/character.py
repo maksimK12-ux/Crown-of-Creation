@@ -100,4 +100,15 @@ class Aurelia(Enemy):
     def __init__(self):
         super().__init__("Aurelia, the Weeping Angel", 150, 18, 8, "MiniBoss_Aurelia")
 
+class Nero(Enemy):
+    def __init__(self):
+        super().__init__("Nero, The Saint of Death", 200, 21, 5, "MiniBoss_Nero")
+
+class Decimus(Enemy):
+    def __init__(self):
+        super().__init__("Decimus of Karst", 250, 25, 10, "MiniBoss_Decimus")
+
+class Harbinger(Enemy):
+    def __init__(self):
+        super().__init__("The Harbinger of Death", 400, 36, 15, "FinalBoss_Harbinger")
 # TODO: other bosses

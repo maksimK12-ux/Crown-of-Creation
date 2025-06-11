@@ -27,10 +27,19 @@
 
 ## Use Cases
 
+### Actors: Player/User
+
+### Preconditions: The user must have tkinter and the plot file
+
+### Main Flow: First of all, the user runs the code and enters the game, then the user chooses to either leave the game, start the game or get help on what to do.
+
+### Alternative Flows (if needed): The user could leave the game
+
+### Postconditions: The expected outcome is either the user loses and the game displays game over or the user wins and a victory screen is displayed
 
 
-
-
+## Use Case Diagram:
+<img src="use_case_diagram.png">
 
 ## Storyboard:  
 <img src="storyboard.png">
@@ -49,7 +58,8 @@
 ### 1. Evaluate how effectively your project meets the functional and non-functional requirements defined in your planning: My project meets the Functional and Non-Functional requirements well as it does evrything described in them. It runs smoothly and is up to my standards. My project has a successful User Interface, Data Display and Data Retrieval. It is reliable and very useable.
 
 
-### 2. Analyse the performance of your program against the key use-cases you identified:
+### 2. Analyse the performance of your program against the key use-cases you identified: My program performs
+
 
 ### 3. Assess the quality of your code in terms of readability, structure, and maintainability:
 
