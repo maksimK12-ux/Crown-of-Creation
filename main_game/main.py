@@ -8,7 +8,7 @@ class Game:
     def __init__(self, root):
         self.root = root
         self.root.title("Crown of Creation") 
-        self.root.geometry("800x600") 
+        self.root.geometry("900x600") 
 
         self.player = None
         self.current_battle = None
@@ -16,9 +16,7 @@ class Game:
         self.story_progression_index = 0
         self.defeated_mini_bosses = [] # Stores names of defeated bosses
         self.story_segments = [
-            (plot.STORY_START_DESERT, self.show_next_story_segment),
-            (plot.STORY_JOURNEY_CONTINUES, self.show_next_story_segment),
-            (plot.STORY_GATE_REVELATION, self.show_next_story_segment),
+            (plot.CROWN_CREATION, self.show_next_story_segment),
             (plot.STORY_HARBINGER_INTRO, self.show_class_selection)
         ]
         # Boss encounter sequence

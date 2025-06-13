@@ -1,18 +1,29 @@
 STORY_WELCOME = "Welcome to Crown of Creation"
 
-STORY_START_DESERT = """You wake up, mind blank and not a thought in your head, observing your surroundings.
+CROWN_CREATION = """
+▒█▀▀█ █▀▀█ █▀▀█ █░░░█ █▀▀▄ 　 █▀▀█ █▀▀ 　 ▒█▀▀█ █▀▀█ █▀▀ █▀▀█ ▀▀█▀▀ ░▀░ █▀▀█ █▀▀▄ 
+▒█░░░ █▄▄▀ █░░█ █▄█▄█ █░░█ 　 █░░█ █▀▀ 　 ▒█░░░ █▄▄▀ █▀▀ █▄▄█ ░░█░░ ▀█▀ █░░█ █░░█ 
+▒█▄▄█ ▀░▀▀ ▀▀▀▀ ░▀░▀░ ▀░░▀ 　 ▀▀▀▀ ▀░░ 　 ▒█▄▄█ ▀░▀▀ ▀▀▀ ▀░░▀ ░░▀░░ ▀▀▀ ▀▀▀▀ ▀░░▀
+
+You wake up, mind blank and not a thought in your head, observing your surroundings.
 A dark, ashen desert stretches as far as the eye can see. The air is heavy with despair.
-An unbearable thirst and a crushing weight of forgotten memories press upon you. """
+An unbearable thirst and a crushing weight of forgotten memories press upon you.
 
-STORY_JOURNEY_CONTINUES = """You start walking, pushing yourself until your legs ache, navigating through darkened caverns.
-Vultures circle ominously overhead, sensing an imminent end. The path seems endless. """
+You start walking, pushing yourself until your legs ache, navigating through darkened caverns.
+Vultures circle ominously overhead, sensing an imminent end. The path seems endless.
 
-STORY_GATE_REVELATION = """Just as you're on the brink of giving up, a silhouette materializes in the hazy distance. 
+Just as you're on the brink of giving up, a silhouette materializes in the hazy distance. 
 As you draw closer, it resolves into a colossal, ancient gate - the entrance to The Midland of Karst.
 A place you once called home. Suddenly, memories rush back like a tidal wave. 
 You were the Army General of this now decayed country, a revered warrior. Wars were fought, victories secured, until... """
 
-STORY_HARBINGER_INTRO = """The Harbinger of Death... the name echoes in your skull like a persistent migraine.
+
+STORY_HARBINGER_INTRO = """
+▒█▀▀█ █▀▀█ █▀▀█ █░░░█ █▀▀▄ 　 █▀▀█ █▀▀ 　 ▒█▀▀█ █▀▀█ █▀▀ █▀▀█ ▀▀█▀▀ ░▀░ █▀▀█ █▀▀▄ 
+▒█░░░ █▄▄▀ █░░█ █▄█▄█ █░░█ 　 █░░█ █▀▀ 　 ▒█░░░ █▄▄▀ █▀▀ █▄▄█ ░░█░░ ▀█▀ █░░█ █░░█ 
+▒█▄▄█ ▀░▀▀ ▀▀▀▀ ░▀░▀░ ▀░░▀ 　 ▀▀▀▀ ▀░░ 　 ▒█▄▄█ ▀░▀▀ ▀▀▀ ▀░░▀ ░░▀░░ ▀▀▀ ▀▀▀▀ ▀░░▀
+
+The Harbinger of Death... the name echoes in your skull like a persistent migraine.
 How can such profound evil exist? All was well in the Midland. Peace had reigned for nearly eight years.
 Then, a shadowy figure emerged from the ominous ravine at the edge of town. 
 Initially accepted, even welcomed, the stranger's dark obsession with the Crown of Creation soon surfaced. 
