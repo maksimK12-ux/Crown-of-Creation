@@ -30,7 +30,8 @@ Initially accepted, even welcomed, the stranger's dark obsession with the Crown 
 He was not here for peace, but for power, and he brought Karst to death's curtain, banishing you in the process. 
 Your quest is clear: reclaim your homeland, gather the pieces of the Crown, and dethrone the Harbinger of Death. """
 
-CLASS_SELECTION_PROMPT = "The path to redemption is fraught with peril. Choose your class wisely, General:"
+CLASS_SELECTION_PROMPT = """The path to redemption is fraught with peril.
+Choose your class wisely, General:"""
 
 BOSS_INTROS = { 
     "Aurelia": "Before you stands Aurelia, the Weeping Angel, her sorrowful gaze promising pain. She guards the first piece of the Crown.",
@@ -40,7 +41,8 @@ BOSS_INTROS = {
     }
 
 
-GAME_OVER_TEXT = "You have fallen. The Harbinger's shadow remains. Karst is lost..." 
+GAME_OVER_TEXT = """You have fallen. The Harbinger's shadow remains. 
+Karst is lost..."""
 
 VICTORY_TEXT = """The Harbinger of Death is no more! Light returns to Karst. 
 With the Crown of Creation, you forge a new empire from the ashes of the old. 

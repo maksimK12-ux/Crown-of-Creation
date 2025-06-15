@@ -10,8 +10,6 @@ class Battle:
 
     def log_message(self, message):
         self.battle_log.append(message)
-        if self.ui_upate_callback:
-            self.ui_upate_callback()
 
     def _player_turn_action(self, action_type, ability_name=None):
         if not self.player.is_alive() or not self.enemy.is_alive():
@@ -32,12 +30,14 @@ class Battle:
             message = "Invalid action."
 
         self.log_message(message)
+
+        if self.ui_upate_callback:
+            self.ui_upate_callback()
+
         if self.enemy.is_alive():
             self.current_turn = self.enemy
             self.enemy_turn()
-            
-        if self.ui_upate_callback:
-            self.ui_upate_callback()
+
         return message
     
     def enemy_turn(self):
@@ -60,7 +60,7 @@ class Battle:
         if not self.player.is_alive():
             return "defeat"
         if not self.enemy.is_alive():
-            return "alive"
+            return "victory"
         return "ongoing"
     
     def get_log(self):
