@@ -170,7 +170,7 @@ class Enemy(Character):
         self.loot_drops = loot_drops if loot_drops else []
 
     def basic_attack(self, target):
-        print(f"{self.name} does a basic attck on {target.name}.")
+        print(f"{self.name} does a basic attack on {target.name}.")
         return self.deal_damage(target)
     
 class Aurelia(Enemy):

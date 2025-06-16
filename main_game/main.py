@@ -8,7 +8,7 @@ class Game:
     def __init__(self, root):
         self.root = root
         self.root.title("Crown of Creation") 
-        self.root.geometry("900x600") 
+        self.root.geometry("1000x600") 
 
         self.player = None
         self.current_battle = None
