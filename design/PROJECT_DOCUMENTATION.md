@@ -98,3 +98,22 @@
 ### 3. Assess the quality of your code in terms of readability, structure, and maintainability: My final project is very readable and understandable. The UI is very simple and easy to understand. For example, when fighting a boss, it clearly shows your remaining health and how much damage you do to the enemy. Also, when choosing a class for your character, a summary of the characters attributes is shown which makes the game very maintainable and readable. I can confidently say that there is no function which the user can't understand if they read the help window.
 
 ### 4. Explain the improvements that should be made in the next stage of development: If I were to further improve my game, I would patch vulnerabilities that the user might be exploiting. I would also potentially make the game look better by adding things such as health bars or other nifty things. I would also add a function which would save your progress in the game and load your progress if re-opening the game.
+
+
+## Full Breakdown of Evaluation Requirements:
+
+### Explain how you could improve your system in future updates. Analyse the impact these updates could have on the user experience.
+* In future updates of my system, as I previously covered in the last question for the sprint 4 review, I could potentially add more features into my game and remove exploits if there are any. Bug fixes and Python updates would be crucial to maintaining functionality in my project. Changes like this could be detrimental for user enjoyment and overall readability and structure of the project. To engage the user more in my project, I could add a save/load system which would greatly aid the user if they want to log off/on the game. This function would save the players progress, hp, enemy hp, etc. To implement this, I would create a save_game() and load_game() method. The save_game() method would trigger this process, writing the JSON string to a file. The load_game() method would read the JSON file and then reconstruct the games state by re-initialising the player with the saved stats. This would be beneficial to the user as it would allow for more time to enjoy the game, rather than playing it all at once, also if the user has limited time, this could propose a better alternative and allow for better time management. However, a negative of adding this is that it could be confusing and hard to understand for new users and would lead them to stop playing the game. To solve this, the user would simply look at the help window to see how to save and load the game.
+
+### Evaluate the system in terms of how well it meets the requirements and specifications.
+* At the end of my code, I believe that I met the requirements and specifications quite well, as I correctly implemented all functions in my user requirements. My code successfully accepts the expected inputs and outputs the necessary information. My final judgement is that I succesfully used Object Oriented Programming to make a functional, immersive and interesting game. I have tested my system numeerous times and I am yet to find any flaws because there aren't any. The UI and Data Retrieval are successful and everyhting that I planned out in my code works.
+
+### Evaluate your processes in terms of project management.
+* Time management was my strong suit for most aspects of this project. I managed my time well and managed to complete the code earlier than other students which only left the design and review questions. Although I did some design at the beginning of the task, including my requirements and specifications, most was left until after I finished my code. For some of the tables/charts, this made making them easier while others were more difficult to complete given that I had already completed the data for them a while ago and forgot some things. I definetely had time to add all the necessary features, as shown in my code but I believe that I could've added more features. I am happy with my current code and do not strongly wish to add more features. My GitHub commits greatly display my desired work ethic as I did the code first while other aspects were left until later.
+
+### Peer Feedback:
+*
+*
+
+### Justify your use of OOP class features
+*
