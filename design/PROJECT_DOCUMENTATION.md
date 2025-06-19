@@ -56,6 +56,81 @@
 ## UML Class Diagram
 <img src="UML_class_diagram.png">
 
+## Structure chart
+<img src="structure_chart.png">
+
+## Flowchart 1
+<img src="flowchart1.png">
+
+## Flowchart 2
+<img src="flowchart2.png">
+
+## Flowchart 3
+<img src="flowchart3.png">
+
+## Pseudocode
+
+* Flow chart 1:
+    BEGIN start_new_game
+
+        PRINT "Game started"
+        PRINT "-------------------------------"
+        PRINT game title banner
+        
+        SET story_progression_index TO 0
+
+        CALL show_next_story_segment
+
+    END start_new_game
+
+
+* Flow chart 2:
+
+    BEGIN initiate_next_encounter
+
+        IF current_boss_index < number_of_bosses THEN
+            SET boss_name TO boss_encounter_order[current_boss_index]
+
+            IF enemy EXISTS for boss_name THEN
+                DISPLAY NarrativeScreen with intro_text
+                SET next action TO start_battle(enemy)
+            ELSE
+                DISPLAY VictoryScreen
+            ENDIF
+
+        ELSE
+            DISPLAY VictoryScreen
+        ENDIF
+
+    END initiate_next_encounter
+
+
+* Flow chart 3
+
+    BEGIN handle_battle_victory
+
+        IF current_battle != 0 THEN
+
+            IF status = "victory" THEN
+
+                SET enemy_name TO current_battle.enemy.name
+                PRINT enemy_name + " defeated!"
+                
+                SET boss_id TO boss_encounter_order[current_boss_index]
+
+                IF boss_id != "Harbinger" THEN
+                    ADD boss_id TO defeated_mini_bosses
+                    LOG "You obtained a piece of the Crown of Creation!"
+                ENDIF
+
+                OUTPUT victory_text
+                SET current_battle TO 0
+
+            ENDIF
+
+        ENDIF
+
+    END handle_battle_victory
 
 
 
@@ -106,6 +181,14 @@
 ### 4. Explain the improvements that should be made in the next stage of development: If I were to further improve my game, I would patch vulnerabilities that the user might be exploiting. I would also potentially make the game look better by adding things such as health bars or other nifty things. I would also add a function which would save your progress in the game and load your progress if re-opening the game.
 
 
+# Design (Sprint 4)
+## Identify Potential Enhancements
+* To enhance my code, I could add a button that would save and load my game. This would be convenient to users with not much time on their hands. I could also make the UI look better by adding things such as a healthbar, more lore and better abilities. I could also add more bosses and smaller enemies to make the game more interesting and interavtive. Adding puzzles could also be a fun way to make the game more fun and imcrease user interactiveness.
+
+## Explain the Integration Process
+* To add these features, I’d start with a save and load system by storing the player’s data (like health and progress) in a file using json. I’d create “Save” and “Load” buttons in the UI to let players continue where they left off. For the UI, I’d add a health bar using tkinter.Canvas that updates during the game. I’d also include some story text and better ability descriptions to make things clearer and more interesting. To add more enemies and bosses, I’d make new enemy types with different stats and abilities. This would make battles feel fresh and more challenging. For puzzles, I’d create separate screens or pop-ups with small challenges—like riddles or pattern games—to give players a break from fighting and make the game more fun. I’d build each part one at a time and test as I go.
+
+
 ## Full Breakdown of Evaluation Requirements:
 
 ### Explain how you could improve your system in future updates. Analyse the impact these updates could have on the user experience.
@@ -129,4 +212,28 @@ I's The games story is very cool i wish it was built upon more.
 I's: Trying to beat the game on pirate is very funny because its litterally impossible.
 
 ### Justify your use of OOP class features
-*
+* The design of the "Crown of Creation" game is fundamentally rooted in Object-Oriented Programming (OOP) principles to ensure modularity, reusability, and maintainability. 
+
+I encapsulated battle logic within the Battle class by managing player, enemy, current_turn, and internal battle_log as instance data, and providing methods like log_message, get_battle_status, and _player_turn_action. This hides complexity from external code and ensures internal state isn’t accidentally manipulated—clearly exhibiting encapsulation. By naming the player action method _player_turn_action with a leading underscore, I signal its intended privacy while maintaining a clean interface. I avoid letting outside modules tamper with battle state directly, which keeps the system robust and easy to maintain. This is classic encapsulation.
+
+My use of instance methods like enemy_turn and get_log avoids any static/class pollution and keeps battle behavior tied to context. This focused responsibility adheres to the Single Responsibility Principle (SRP). I started with a base Character class encapsulating shared data (name, hp, etc.) and behavior (take_damage, deal_damage, heal, is_alive, display_stats). This centralizes shared logic, avoids code duplication, and makes it easy to introduce new character types with minimal changes—an embodiment of inheritance and code reuse.
+
+PlayerCharacter extends Character to add class-specific stats, an inventory system, and a flexible ability mechanism. By mapping ability names to internal methods like _ability_backstab, I employed the Strategy-esque pattern, this is polymorphism via method references. It’s clean, scalable, and removes the need for long if-else chains. Similarly, Enemy subclasses (e.g., Aurelia, Nero) inherit from Character and pass their own stats in the constructor, an example of proper use of inheritance for “is-a” relationships. If I later want to add new enemy behavior, I could override methods like basic_attack, showing extensibility via polymorphism. Furthermore, I chose composition wisely: PlayerCharacter contains an inventory list of Item objects (from items.py), adhering to the principle of composition over deep inheritance hierarchies.
+
+I created a generic Item base class encapsulating shared attributes like name and description, expanding via subclass CrownPiece. This simple inheritance setup allows me to extend item types in the future (e.g., weapons or consumables) without altering existing code, keeping the design open/closed. This abstraction reduces coupling, clients need only know about generic Items.
+
+My Game class aggregates all components: UI, player, battle engine, storyline following composition: Game has a Battle, has a PlayerCharacter, and handles screens from ui.py. Teaming composition with clear instance relationships makes the code modular and maintainable. I also upheld SRP by letting Game manage flow logic (scene transitions, battle setup, victory/defeat handling) while deferring UI behavior to screen classes and combat details to Battle. This separation avoids clutter and makes future extensions (e.g., saving, loading, replay) easier. Turn-tracking and story progression are handled via instance attributes like current_boss_index and story_segments, again safely hidden and managed via class methods, no global state pollution.
+
+I defined BaseScreen as an abstract foundation for all screens, encapsulating shared widget behavior such as show(), hide(), and clear_widgets(). Derived classes (StartScreen, BattleScreen, etc.) inherit this common logic and implement only screen-specific details. This is inheritance in action, keeping code DRY and promoting reuse. Polymorphism makes my Game classes screen-switching easy: calling hide(), destroy(), and show() works uniformly across all screens, even though each screen renders differently. I also structured BattleScreen.update_battle_ui() to invoke callbacks on the Game object dynamically, which retains a decoupled but interactive design.
+
+Encapsulation: Internal state (e.g., HP, turn, logs) is kept private within classes, promoting safety and easier debugging.
+
+Inheritance: Shared behaviors in Character and BaseScreen reduce redundancy and allow additions like new enemies or screens without copy-paste.
+
+Polymorphism: Overridden methods and dynamic dispatch (abilities, enemy attacks, UI updates) give me flexibility to treat diverse objects uniformly.
+
+Abstraction: Clients interact with high-level APIs (use_ability, start_battle, show()) without worrying about underlying details—making the system modular.
+
+Composition over inheritance: I used composition (Game has Battle, inventory has Items) to avoid fragile hierarchies, following modern OOP guidance.
+
+SOLID alignment: Classes are focused (SRP), open for extension but closed to modification (OCP), and replaceable via inheritance/subtyping (LSP), with no fat interfaces and dependency on abstractions (ISP/DIP). In sum, I intentionally distributed responsibilities across well-defined classes, using OOP features to produce code that is modular, extendable, maintainable, and robust. 
