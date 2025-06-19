@@ -50,6 +50,12 @@
 ## Level 1 Data Flow Diagram:
 <img src="level_1_dfd.png">
 
+## Gantt Chart:
+<img src="gantt_chart.png">
+
+## UML Class Diagram
+<img src="UML_class_diagram.png">
+
 
 
 
@@ -112,8 +118,15 @@
 * Time management was my strong suit for most aspects of this project. I managed my time well and managed to complete the code earlier than other students which only left the design and review questions. Although I did some design at the beginning of the task, including my requirements and specifications, most was left until after I finished my code. For some of the tables/charts, this made making them easier while others were more difficult to complete given that I had already completed the data for them a while ago and forgot some things. I definetely had time to add all the necessary features, as shown in my code but I believe that I could've added more features. I am happy with my current code and do not strongly wish to add more features. My GitHub commits greatly display my desired work ethic as I did the code first while other aspects were left until later.
 
 ### Peer Feedback:
-*
-*
+* Ario (Plus, minus, interests)
++'s Game UI was fun to use, Interacting with it is also easy, The classes were very fun and each one offerd interesting unique mechanics that i had fun using , It replayable and is not just a one time play which makes it a very good game. He also followed his requirements very well and the game was overall amazing
+-'s Game was a little spammy and the final boss is pretty much impossible
+I's The games story is very cool i wish it was built upon more.
+
+* Rufus (Plus, minus, interests)
++'s: Games UI is simple and yields expected outputs, and each class acts as its own different kind of game / difficulty level. As mentioned in the fuctional requirements, you can enter enemy combat.
+-'s: The Game feels a little repetitive and lacks some of the functionality mentioned in the functional requirements (movement and puzzle solving) which is unfortunate.
+I's: Trying to beat the game on pirate is very funny because its litterally impossible.
 
 ### Justify your use of OOP class features
 *
